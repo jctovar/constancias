@@ -1,0 +1,25 @@
+{
+  "name": "constancias",
+  "homepage": "https://github.com/jctovar/constancias",
+  "authors": [
+    "Juan Carlos Tovar Gomez <jctovar@ired.unam.mx>"
+  ],
+  "description": "Sistema de constancias",
+  "main": "index.html",
+  "keywords": [
+    "constancias",
+    "unam",
+    "iztacala"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.0.9"
+  }
+}
