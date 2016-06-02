@@ -74,7 +74,7 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
         })
         
         .when('/dashboard', {
-          templateUrl: 'templates/dashboard.html',
+          templateUrl: 'templates/app/dashboard.html',
           controller: 'DashboardCtrl'
         })
         .when('/my', {

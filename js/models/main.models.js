@@ -84,4 +84,4 @@ angular.module('main.models', ['ngResource'])
     {
         'update': { method:'PUT' }
     });
-})
+});
