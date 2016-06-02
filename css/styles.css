@@ -1,0 +1,62 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 200 !important;
+    margin: 0px;
+    padding: 0px;
+    color: #333333;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.jumbotron {
+    background-image: url("img/main-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.jumbotron-text {
+    padding: 100px;
+}
+
+.form {
+    background-color: #028299;
+    color: whitesmoke;
+}
+
+
+.text-footer {
+  font-size: x-small;
+  color: white;
+}
+
+
+.white {
+    color: white;
+}
+
+.content {
+  min-height: calc(100vh) !important;
+}
+
+md-icon svg {
+  fill: inherit;
+}
+
+.s18 {
+  width: 18px;
+  height: 18px;
+}
+
+.s24 {
+  width: 24px;
+  height: 24px;
+}
+
+.s36 {
+  width: 36px;
+  height: 36px;

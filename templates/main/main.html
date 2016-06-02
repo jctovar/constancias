@@ -1,0 +1,65 @@
+<md-toolbar layout="row" class="md-whiteframe-3dp">
+  <div class="md-toolbar-tools">
+    <md-menu md-position-mode="target-right target">
+        <md-button aria-label="Menu" class="md-icon-button" md-ink-ripple hide-gt-xs ng-click="openMenu($mdOpenMenu, $event)">
+            <md-icon md-svg-icon="menu"></md-icon>
+        </md-button>
+          <md-menu-content width="4">
+            <md-menu-item>
+            <md-button ng-click="go('login')">
+                <div layout="row"><p flex>Ingresar</p></div>
+            </md-button>
+            </md-menu-item>
+            <md-menu-item>
+            <md-button ng-click="go('signin')">
+                <div layout="row"><p flex>Registro</p></div>
+            </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu> 
+    <h3>UNAM</h3>
+    <span flex></span>
+    <span hide-xs>
+        <md-button md-ink-ripple aria-label="registro" ng-click="signin()"> registro </md-button>
+        <md-button md-ink-ripple aria-label="ingresar" ng-click="login()"> ingresar </md-button>
+    </span>
+  </div>
+</md-toolbar>
+<md-content role="main" class="content">
+  <div layout-align="space-between stretch" layout="column">
+    <div class="jumbotron" class="md-whiteframe-1dp">
+      <div class="jumbotron-text">
+        <h1>Bienvenido...</h1>
+        <p>Sistema de constancias.</p>
+      </div>
+    </div>
+    <div layout="row" class="form md-whiteframe-2dp" layout-align="center stretch">
+      <div flex="66" layout-padding>
+        subscribirse al boletin
+      </div>
+    </div>
+    <div layout="row" layout-padding layout-align="center">
+        <div flex="66" class="body">
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+          <p>Pellentesque sit amet enim sit amet nisl lacinia laoreet ut ut tellus. Donec elementum neque ut augue consequat, at elementum neque semper. Nunc non euismod sem, ac faucibus metus. Suspendisse sapien nisl, hendrerit sit amet arcu ac, facilisis viverra augue. Suspendisse eu leo eget sem mollis consectetur eu eu magna. Pellentesque rutrum, elit vitae consectetur auctor, libero nisl ultricies ante, a feugiat ipsum magna a ante. Curabitur facilisis viverra ultrices. Integer porta mattis elit, non lacinia enim dictum quis. Vestibulum vestibulum imperdiet diam eget tempus. Morbi id eros imperdiet, fringilla leo ac, semper sem. Nulla facilisi. Donec lobortis elit ipsum, eu fermentum risus accumsan in. Phasellus sit amet faucibus ante.</p>
+          <p>Ut suscipit semper malesuada. Phasellus tempor sodales lectus eu tincidunt. Etiam condimentum nec velit sed efficitur. Donec neque diam, mollis non orci ut, dictum condimentum nisl. Curabitur in metus at ipsum elementum vehicula. Aliquam in nunc velit. Praesent dictum cursus erat, sit amet mattis eros fringilla iaculis. Cras ut ante tempor, sagittis erat id, vestibulum tellus. Fusce ultricies luctus condimentum. Vivamus molestie, tellus at malesuada mollis, tortor ligula pharetra augue, at posuere nunc turpis at sapien. Etiam nec ligula imperdiet, pulvinar quam ut, vehicula augue. Etiam sed auctor sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut at dignissim orci.</p>
+          <p>Integer quis ante scelerisque dolor mollis pharetra. Curabitur varius arcu eu odio gravida fringilla. Aenean vitae risus vitae quam volutpat congue. Maecenas a quam lobortis, vehicula augue sed, ultrices ipsum. Mauris vestibulum iaculis maximus. Praesent quis ultricies nibh. Praesent eget lobortis arcu. Vestibulum urna nibh, convallis at ultrices sed, porttitor eget est. Ut at lectus leo. Aenean fermentum risus eget neque iaculis, et tristique magna cursus. Donec rutrum ligula ut diam semper volutpat. Quisque at elit massa. Donec ac feugiat ligula. Aliquam hendrerit auctor pretium. Sed venenatis erat et porta tempor. Mauris finibus scelerisque lacus, ac bibendum nisl suscipit non. Mauris a metus dolor. Donec scelerisque mauris neque, facilisis tincidunt odio facilisis et. Vestibulum sapien sem, condimentum nec leo in, blandit feugiat eros. Donec eget venenatis purus. Mauris leo neque, laoreet ut purus ac, commodo convallis magna. Praesent sit amet sagittis augue.</p>
+        </div>
+    </div>
+    <div layout="row" layout-padding layout-align="center">
+        <div flex="66" class="body">
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+          <p>Pellentesque sit amet enim sit amet nisl lacinia laoreet ut ut tellus. Donec elementum neque ut augue consequat, at elementum neque semper. Nunc non euismod sem, ac faucibus metus. Suspendisse sapien nisl, hendrerit sit amet arcu ac, facilisis viverra augue. Suspendisse eu leo eget sem mollis consectetur eu eu magna. Pellentesque rutrum, elit vitae consectetur auctor, libero nisl ultricies ante, a feugiat ipsum magna a ante. Curabitur facilisis viverra ultrices. Integer porta mattis elit, non lacinia enim dictum quis. Vestibulum vestibulum imperdiet diam eget tempus. Morbi id eros imperdiet, fringilla leo ac, semper sem. Nulla facilisi. Donec lobortis elit ipsum, eu fermentum risus accumsan in. Phasellus sit amet faucibus ante.</p>
+          <p>Ut suscipit semper malesuada. Phasellus tempor sodales lectus eu tincidunt. Etiam condimentum nec velit sed efficitur. Donec neque diam, mollis non orci ut, dictum condimentum nisl. Curabitur in metus at ipsum elementum vehicula. Aliquam in nunc velit. Praesent dictum cursus erat, sit amet mattis eros fringilla iaculis. Cras ut ante tempor, sagittis erat id, vestibulum tellus. Fusce ultricies luctus condimentum. Vivamus molestie, tellus at malesuada mollis, tortor ligula pharetra augue, at posuere nunc turpis at sapien. Etiam nec ligula imperdiet, pulvinar quam ut, vehicula augue. Etiam sed auctor sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut at dignissim orci.</p>
+          <p>Integer quis ante scelerisque dolor mollis pharetra. Curabitur varius arcu eu odio gravida fringilla. Aenean vitae risus vitae quam volutpat congue. Maecenas a quam lobortis, vehicula augue sed, ultrices ipsum. Mauris vestibulum iaculis maximus. Praesent quis ultricies nibh. Praesent eget lobortis arcu. Vestibulum urna nibh, convallis at ultrices sed, porttitor eget est. Ut at lectus leo. Aenean fermentum risus eget neque iaculis, et tristique magna cursus. Donec rutrum ligula ut diam semper volutpat. Quisque at elit massa. Donec ac feugiat ligula. Aliquam hendrerit auctor pretium. Sed venenatis erat et porta tempor. Mauris finibus scelerisque lacus, ac bibendum nisl suscipit non. Mauris a metus dolor. Donec scelerisque mauris neque, facilisis tincidunt odio facilisis et. Vestibulum sapien sem, condimentum nec leo in, blandit feugiat eros. Donec eget venenatis purus. Mauris leo neque, laoreet ut purus ac, commodo convallis magna. Praesent sit amet sagittis augue.</p>
+        </div>
+    </div>
+    <div class="prefooter" layout="row" layout-padding layout-align="center">
+        <div flex="66" layout-align="center">
+          <a href="#/about">Acerca</a> | <a href="#/credits">Directorio</a> | <a href="#/contact">Contacto</a>
+        </div>
+    </div>
+    
+  </div>
+</md-content>
+<div ng-include=" 'templates/main/footer.html' "></div>
