@@ -1,0 +1,4 @@
+RewriteEngine On 
+RewriteCond %{SERVER_PORT} 80 
+RewriteCond %{REQUEST_URI} posgrado
+RewriteRule ^(.*)$ https://galadriel.ired.unam.mx/constancias/$1 [R,L]
