@@ -35,9 +35,6 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
     $scope.toggleSidenav = function(menuId) {
       $mdSidenav(menuId).toggle();
     };
-    
-    //console.log(sessionStorage.email);
-    //$scope.user_mail = 's';
 })
 
 .controller('BackCtrl', function ($scope, $location, $window) {
