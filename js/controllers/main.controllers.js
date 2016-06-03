@@ -21,7 +21,7 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
   }
 })
 
-.controller('LoginCtrl', function ($scope, $route, $location, auth) { 
+.controller('LoginCtrl', function ($scope, $route, $location, auth) {
     $scope.login = function () {
         auth.login($scope.user_email, $scope.user_password);
     }
