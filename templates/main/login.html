@@ -9,15 +9,15 @@
           <form name="form">
             <md-input-container class="md-block">
               <label>Usuario</label>
-              <input name="user_email" ng-model="user_email" type="email" required autofocus>
-              <div ng-messages="form.user_email.$error">
+              <input name="account_email" ng-model="account_email" type="email" required autofocus>
+              <div ng-messages="form.account_email.$error">
                   <div ng-message="required">Campo requerido.</div>
               </div>
             </md-input-container>
             <md-input-container class="md-block">
               <label>Contraseña</label>
-              <input name="user_password" ng-model="user_password" type="password" required>
-              <div ng-messages="form.user_password.$error">
+              <input name="account_password" ng-model="account_password" type="password" required>
+              <div ng-messages="form.account_password.$error">
                   <div ng-message="required">Es necesario.</div>
               </div>
             </md-input-container>

@@ -3,7 +3,7 @@ angular.module('main.auth', ['ngResource', 'base64'])
 .factory("auth", function ($location, $http, $base64, login) {
     return{
         login : function (username, password) {
-            //$http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode(username + ':' + password);
+            
             
             var query = login.get({ id: username, password:  password }, function () {
                 if (query.login[0] && query.login[0].user_email) {

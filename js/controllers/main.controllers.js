@@ -21,9 +21,19 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
   }
 })
 
-.controller('LoginCtrl', function ($scope, $route, $location, auth) {
+.controller('LoginCtrl', function ($scope, $http, $base64, $mdToast, $location, login) {
     $scope.login = function () {
-        auth.login($scope.user_email, $scope.user_password);
+        $http.defaults.headers.common.Authorization = 'Basic ' + $base64.encode($scope.account_email + ':' + $scope.account_password);
+        console.log($base64.encode($scope.account_email + ':' + $scope.account_password));
+        
+        login.get({ account_email: $scope.account_email, account_password: $scope.account_password })
+        .$promise.then(function (result) {
+            $location.path('dashboard')
+        })
+        .catch(function(error) {
+            console.log("rejected " + JSON.stringify(error.data.message));
+            $mdToast.show($mdToast.simple().textContent('Ocurrio un error, verifique sus credenciales!'));
+        });
     }
 })
 
