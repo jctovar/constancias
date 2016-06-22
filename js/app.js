@@ -43,33 +43,33 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
         // Alumnos
         .when('/students', {
           title: 'Alumnos',
-          templateUrl: 'templates/students.html',
+          templateUrl: 'templates/students/students.html',
           controller: 'StudentsCtrl'
         })
         .when('/student', {
           title: 'Agregar alumno',
-          templateUrl: 'templates/student.html',
+          templateUrl: 'templates/students/student.html',
           controller: 'AddStudentCtrl'
         })
         .when('/student/:studentId', {
           title: 'Editar alumno',
-          templateUrl: 'templates/student.html',
+          templateUrl: 'templates/students/student.html',
           controller: 'EditStudentCtrl',
         })
         // Cursos
         .when('/events', {
           title: 'Eventos',
-          templateUrl: 'templates/events.html',
+          templateUrl: 'templates/events/events.html',
           controller: 'EventsCtrl'
         })
-        .when('/events', {
+        .when('/event', {
           title: 'Agregar evento',
-          templateUrl: 'templates/event.html',
+          templateUrl: 'templates/events/event.html',
           controller: 'AddEventCtrl'
         })
-        .when('/events/:eventId', {
+        .when('/event/:eventId', {
           title: 'Editar evento',
-          templateUrl: 'templates/event.html',
+          templateUrl: 'templates/events/event.html',
           controller: 'EditEventCtrl',
         })
         

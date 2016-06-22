@@ -1,0 +1,55 @@
+<div ng-include=" 'templates/partials/back.html' "></div>
+<md-content layout-padding>
+    <form name="form">
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Procedencia</label>
+                <md-select ng-model="item.origin_id" ng-change="change()">
+                    <md-option ng-repeat="origin in list1" value="{{ origin.origin_id }}">
+                    {{ origin.origin_name }}
+                    </md-option>
+                </md-select>
+                <br>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Nombre</label>
+                <input name="student_firstname" ng-model="item.student_firstname" type="text" ng-change="change()" capitalize md-maxlength="45" required>
+                <div ng-messages="form.student_firstname.$error">
+                    <div ng-message="md-maxlength">El campo debe de ser de menos de 45 caracteres de longitud</div>
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Apellidos</label>
+                <input name="student_lastname" ng-model="item.student_lastname" type="text" ng-change="change()" capitalize md-maxlength="45" required>
+                <div ng-messages="form.student_lastname.$error">
+                    <div ng-message="md-maxlength">El campo debe de ser de menos de 45 caracteres de longitud</div>
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Correo electrónico</label>
+                <input name="student_email" ng-model="item.student_email" type="email" ng-change="change()" md-maxlength="45" required>
+                <div ng-messages="form.student_email.$error">
+                    <div ng-message="md-maxlength">El campo debe de ser de menos de 45 caracteres de longitud</div>
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Teléfono</label>
+                <input name="student_phone" ng-model="item.student_phone"type="phone" ng-change="change()" ng-pattern="/^[0-9]{10}$/" md-maxlength="10">
+                <div ng-messages="form.student_phone.$error">
+                    <div ng-message="md-pattern">El campo debe de ser un numero teléfonico</div>
+                </div>
+            </md-input-container>
+        </div>
+    </form>
+</md-content>
+<md-button  ng-disabled="!form.$valid" class="md-fab md-fab-bottom-right" ng-click="save()">    
+  <md-icon md-svg-icon="check"></md-icon>
+  <md-tooltip md-direction="top"> Aceptar </md-tooltip>
+</md-button>

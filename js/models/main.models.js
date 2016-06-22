@@ -23,15 +23,15 @@ angular.module('main.models', ['ngResource'])
     });
 })
 
-.factory('projects', function($resource, server_config) {
-	return $resource(server_config.url + '/projects/:id', { id : '@_id' },
+.factory('origins', function($resource, server_config) {
+	return $resource(server_config.url + '/origins/:id', { id : '@_id' },
     {
         'update': { method:'PUT' }
     });
 })
 
-.factory('courses', function($resource, server_config) {
-	return $resource(server_config.url + '/courses/:id', { id : '@_id' },
+.factory('events', function($resource, server_config) {
+	return $resource(server_config.url + '/events/:id', { id : '@_id' },
     {
         'update': { method:'PUT' }
     });
