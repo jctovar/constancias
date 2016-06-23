@@ -40,7 +40,7 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
 
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
       $routeProvider
-        // Alumnos
+        // students
         .when('/students', {
           title: 'Alumnos',
           templateUrl: 'templates/students/students.html',
@@ -56,7 +56,7 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
           templateUrl: 'templates/students/student.html',
           controller: 'EditStudentCtrl',
         })
-        // Cursos
+        // events
         .when('/events', {
           title: 'Eventos',
           templateUrl: 'templates/events/events.html',
@@ -72,6 +72,28 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
           templateUrl: 'templates/events/event.html',
           controller: 'EditEventCtrl',
         })
+        // dates
+        .when('/dates', {
+          title: 'Fechas',
+          templateUrl: 'templates/dates/users.html',
+          controller: 'UsersCtrl'
+        })
+        .when('/date', {
+          title: 'Agregar fecha',
+          templateUrl: 'templates/dates/user.html',
+          controller: 'AddUserCtrl'
+        })
+        .when('/date/:dateId', {
+          title: 'Editar fecha',
+          templateUrl: 'templates/dates/user.html',
+          controller: 'EditUserCtrl',
+        })
+        // groups
+        .when('/group/:dateId', {
+          title: 'Alumnos inscritos',
+          templateUrl: 'templates/groups/group.html',
+          controller: 'GroupCtrl',
+        })
         // Users
         .when('/users', {
           title: 'Usuario',
@@ -83,15 +105,17 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
           templateUrl: 'templates/users/user.html',
           controller: 'AddUserCtrl'
         })
-        .when('/user/:userId', {
+        .when('/user/:accountId', {
           title: 'Editar usuario',
           templateUrl: 'templates/users/user.html',
           controller: 'EditUserCtrl',
         })
+        // app
         .when('/dashboard', {
           templateUrl: 'templates/app/dashboard.html',
           controller: 'DashboardCtrl'
         })
+
         .when('/my', {
           title: 'Datos personales',
           templateUrl: 'templates/user.html',

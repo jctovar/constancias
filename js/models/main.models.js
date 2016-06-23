@@ -16,8 +16,8 @@ angular.module('main.models', ['ngResource'])
     });
 })
 
-.factory('assignments', function($resource, server_config) {
-	return $resource(server_config.url + '/assignments/:id', { id : '@_id' },
+.factory('groups', function($resource, server_config) {
+	return $resource(server_config.url + '/groups/:id', { id : '@_id' },
     {
         'update': { method:'PUT' }
     });
@@ -37,8 +37,8 @@ angular.module('main.models', ['ngResource'])
     });
 })
 
-.factory('schools', function($resource, server_config) {
-	return $resource(server_config.url + '/schools/:id', { id : '@_id' },
+.factory('dates', function($resource, server_config) {
+	return $resource(server_config.url + '/dates/:id', { id : '@_id' },
     {
         'update': { method:'PUT' }
     });

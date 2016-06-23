@@ -42,8 +42,26 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
     }
 })
 
-.controller('DashboardCtrl', function ($scope) {
+.controller('DashboardCtrl', function ($scope, $location, $mdDialog, $mdToast, dates) {
+    $scope.$on('$viewContentLoaded', function ($evt, data) {
+        inito();
+    });
 
+    $scope.show = function (index) {
+      $location.path('/group/'+ index);
+    }
+
+    var inito = function () {
+            $scope.bar = false;
+            dates.get()
+            .$promise.then(function (result) {
+                $scope.items = result.dates;
+                $scope.bar = !$scope.bar;
+            })
+            .catch(function(error) {
+                $location.path('/login')
+            });
+    };
 })
 
 .controller('NavCtrl', function ($scope, $location, $mdSidenav, auth) {
@@ -410,8 +428,8 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
         $scope.counter++;
     };
 
-    var query1 = categories.get(function() {
-        $scope.list1 = query1.categories;    
+    var query1 = roles.get(function() {
+        $scope.list1 = query1.roles;    
     });
 })
 
@@ -442,4 +460,61 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
     var query = accounts.get({ id: $routeParams.accountId },function() {
         $scope.item = query.accounts[0];    
     });
+})
+
+.controller('GroupCtrl', function ($scope, $location, $routeParams, $mdDialog, $mdToast, groups) {
+  $scope.title = 'Alumnos inscritos';
+  
+  $scope.$on('$viewContentLoaded', function ($evt, data) {
+      inito();
+  });
+ 
+  $scope.clear = function () {
+      console.log($scope.searchQuery);
+      $scope.searchQuery = '';
+  }
+  
+  $scope.add = function () {
+      $location.path('/student')
+  }
+  
+  $scope.edit = function (index) {
+      $location.path('/student/'+ index);
+  }
+  
+  $scope.delete = function(index, ev) {
+        var confirm = $mdDialog.confirm()
+            .title('Esta seguro de eliminar este registro?')
+            .textContent('El registro sera eliminado permanentemente.')
+            .ok('Si')
+            .cancel('No');
+            $mdDialog.show(confirm).then(function() {
+                    del(index);
+                }, function() {
+                console.log('You decided to keep your record.')
+            });
+  };
+  
+  var del = function (id) {
+        students.delete({ id: id })
+        .$promise.then(function (result) {
+            inito();
+            $mdToast.show($mdToast.simple().textContent('Registro eliminado!'));
+        })
+        .catch(function(error) {
+             $mdToast.show($mdToast.simple().textContent('Ocurrio un error!'));
+        });    
+  }
+  
+  var inito = function () {
+        $scope.bar = false;
+        groups.get({ id: $routeParams.dateId })
+        .$promise.then(function (result) {
+            $scope.items = result.groups;
+            $scope.bar = !$scope.bar;
+        })
+        .catch(function(error) {
+             $location.path('/login')
+        });
+   };
 })
