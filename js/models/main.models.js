@@ -51,8 +51,8 @@ angular.module('main.models', ['ngResource'])
     });
 })
 
-.factory('grades', function($resource, server_config) {
-	return $resource(server_config.url + '/grades/:id', { id : '@_id' },
+.factory('roles', function($resource, server_config) {
+	return $resource(server_config.url + '/roles/:id', { id : '@_id' },
     {
         'update': { method:'PUT' }
     });
@@ -65,8 +65,8 @@ angular.module('main.models', ['ngResource'])
     });
 })
 
-.factory('users', function($resource, server_config) {
-	return $resource(server_config.url + '/users/:id', { id : '@_id' },
+.factory('accounts', function($resource, server_config) {
+	return $resource(server_config.url + '/accounts/:id', { id : '@_id' },
     {
         'update': { method:'PUT' }
     });

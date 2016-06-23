@@ -72,7 +72,22 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
           templateUrl: 'templates/events/event.html',
           controller: 'EditEventCtrl',
         })
-        
+        // Users
+        .when('/users', {
+          title: 'Usuario',
+          templateUrl: 'templates/users/users.html',
+          controller: 'UsersCtrl'
+        })
+        .when('/user', {
+          title: 'Agregar usuario',
+          templateUrl: 'templates/users/user.html',
+          controller: 'AddUserCtrl'
+        })
+        .when('/user/:userId', {
+          title: 'Editar usuario',
+          templateUrl: 'templates/users/user.html',
+          controller: 'EditUserCtrl',
+        })
         .when('/dashboard', {
           templateUrl: 'templates/app/dashboard.html',
           controller: 'DashboardCtrl'

@@ -256,7 +256,7 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
   };
   
   var del = function (id) {
-        students.delete({ id: id })
+        events.delete({ id: id })
         .$promise.then(function (result) {
             inito();
             $mdToast.show($mdToast.simple().textContent('Registro eliminado!'));
@@ -330,5 +330,116 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
     
     var query = events.get({ id: $routeParams.eventId },function() {
         $scope.item = query.events[0];    
+    });
+})
+
+.controller('UsersCtrl', function ($scope, $location, $mdDialog, $mdToast, accounts) {
+  $scope.title = 'Catalogo de usuarios';
+  
+  $scope.$on('$viewContentLoaded', function ($evt, data) {
+      inito();
+  });
+ 
+  $scope.clear = function () {
+      console.log($scope.searchQuery);
+      $scope.searchQuery = '';
+  }
+  
+  $scope.add = function () {
+      $location.path('user')
+  }
+  
+  $scope.edit = function (index) {
+      $location.path('user/'+ index);
+  }
+  
+  $scope.delete = function(index, ev) {
+        var confirm = $mdDialog.confirm()
+            .title('Esta seguro de eliminar este registro?')
+            .textContent('El registro sera eliminado permanentemente.')
+            .ok('Si')
+            .cancel('No');
+            $mdDialog.show(confirm).then(function() {
+                    del(index);
+                }, function() {
+                console.log('You decided to keep your record.')
+            });
+  };
+  
+  var del = function (id) {
+        accounts.delete({ id: id })
+        .$promise.then(function (result) {
+            inito();
+            $mdToast.show($mdToast.simple().textContent('Registro eliminado!'));
+        })
+        .catch(function(error) {
+             $mdToast.show($mdToast.simple().textContent('Ocurrio un error!'));
+        });    
+  }
+  
+  var inito = function () {
+        $scope.bar = false;
+        accounts.get()
+        .$promise.then(function (result) {
+            $scope.items = result.accounts;
+            $scope.bar = !$scope.bar;
+        })
+        .catch(function(error) {
+             $location.path('/login')
+        });
+   };
+})
+
+.controller('AddUserCtrl', function ($scope, $location, $routeParams, $mdToast, accounts, roles) {
+    $scope.counter = 0;
+    
+    $scope.save = function () {  
+          if ($scope.counter != 0) {
+              var result = events.save($scope.item, function() {
+                  if (result.events.affectedRows == 1) {
+                      $mdToast.show($mdToast.simple().textContent('Datos guardados!'));
+                      $location.path('events')
+                  };
+              });            
+          } else {
+              $location.path('events')
+          }
+    };
+    
+    $scope.change = function() {
+        $scope.counter++;
+    };
+
+    var query1 = categories.get(function() {
+        $scope.list1 = query1.categories;    
+    });
+})
+
+.controller('EditUserCtrl', function ($scope, $location, $routeParams, $mdToast, accounts, roles) {
+    $scope.counter = 0;
+    
+    $scope.save = function () {  
+          if ($scope.counter != 0) {
+              var result = accounts.update($scope.item, function() {
+                  if (result.accounts.affectedRows == 1) {
+                      $mdToast.show($mdToast.simple().textContent('Datos guardados!'));
+                      $location.path('users')
+                  };
+              });            
+          } else {
+              $location.path('users')
+          }
+    };
+    
+    $scope.change = function() {
+        $scope.counter++;
+    };
+
+    var query1 = roles.get(function() {
+        $scope.list1 = query1.roles;    
+    });
+    
+    var query = accounts.get({ id: $routeParams.accountId },function() {
+        $scope.item = query.accounts[0];    
     });
 })
