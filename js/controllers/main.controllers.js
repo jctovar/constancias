@@ -527,13 +527,25 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
    };
 })
 
-.controller('GroupCtrl', function ($scope, $location, $routeParams, $mdDialog, $mdToast, groups) {
+.controller('GroupCtrl', function ($scope, $location, $routeParams, $mdDialog, $mdToast, pdf_template, groups, certificates) {
   $scope.title = 'Alumnos inscritos';
   
   $scope.$on('$viewContentLoaded', function ($evt, data) {
       inito();
   });
- 
+  
+  $scope.certificate = function (index) {
+    var data = certificates.get({ id: index }, function() {
+        console.log(data.certificates[0]);   
+
+        var docDefinition = pdf_template(data.certificates[0]);
+
+        pdfMake.createPdf(docDefinition).print(); 
+    });
+
+        
+  };
+
   $scope.clear = function () {
       console.log($scope.searchQuery);
       $scope.searchQuery = '';
