@@ -73,10 +73,10 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
           controller: 'EditEventCtrl',
         })
         // dates
-        .when('/dates', {
-          title: 'Fechas',
-          templateUrl: 'templates/dates/users.html',
-          controller: 'UsersCtrl'
+        .when('/dates/:eventId', {
+          title: 'Fechas del evento',
+          templateUrl: 'templates/dates/dates.html',
+          controller: 'DatesCtrl'
         })
         .when('/date', {
           title: 'Agregar fecha',

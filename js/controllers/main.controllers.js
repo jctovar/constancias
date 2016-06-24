@@ -252,6 +252,10 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
       $scope.searchQuery = '';
   }
   
+  $scope.dates = function (index) {
+      $location.path('dates/'+ index)
+  }
+
   $scope.add = function () {
       $location.path('event')
   }
@@ -460,6 +464,67 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
     var query = accounts.get({ id: $routeParams.accountId },function() {
         $scope.item = query.accounts[0];    
     });
+})
+
+.controller('DatesCtrl', function ($scope, $location, $routeParams, $mdDialog, $mdToast, dates) {
+  $scope.title = 'Fechas del eventos';
+  
+  $scope.$on('$viewContentLoaded', function ($evt, data) {
+      inito();
+  });
+ 
+  $scope.clear = function () {
+      console.log($scope.searchQuery);
+      $scope.searchQuery = '';
+  }
+  
+  $scope.dates = function () {
+      $location.path('dates/'+ index)
+  }
+
+  $scope.add = function () {
+      $location.path('event')
+  }
+  
+  $scope.edit = function (index) {
+      $location.path('event/'+ index);
+  }
+  
+  $scope.delete = function(index, ev) {
+        var confirm = $mdDialog.confirm()
+            .title('Esta seguro de eliminar este registro?')
+            .textContent('El registro sera eliminado permanentemente.')
+            .ok('Si')
+            .cancel('No');
+            $mdDialog.show(confirm).then(function() {
+                    del(index);
+                }, function() {
+                console.log('You decided to keep your record.')
+            });
+  };
+  
+  var del = function (id) {
+        events.delete({ id: id })
+        .$promise.then(function (result) {
+            inito();
+            $mdToast.show($mdToast.simple().textContent('Registro eliminado!'));
+        })
+        .catch(function(error) {
+             $mdToast.show($mdToast.simple().textContent('Ocurrio un error!'));
+        });    
+  }
+  
+  var inito = function () {
+        $scope.bar = false;
+        dates.get({ id: $routeParams.dateId })
+        .$promise.then(function (result) {
+            $scope.items = result.dates;
+            $scope.bar = !$scope.bar;
+        })
+        .catch(function(error) {
+             $location.path('/login')
+        });
+   };
 })
 
 .controller('GroupCtrl', function ($scope, $location, $routeParams, $mdDialog, $mdToast, groups) {

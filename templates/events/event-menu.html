@@ -4,6 +4,11 @@
     </md-button>
     <md-menu-content width="4">
         <md-menu-item>
+        <md-button ng-click="dates(item.event_id)">
+            <div layout="row"><p flex>Fechas programadas</p><md-icon md-svg-icon="agenda"></md-icon></div>
+        </md-button>
+        </md-menu-item>
+        <md-menu-item>
         <md-button ng-click="edit(item.event_id)">
             <div layout="row"><p flex>Editar evento</p><md-icon md-svg-icon="edit"></md-icon></div>
         </md-button>

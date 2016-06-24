@@ -32,6 +32,12 @@
                 </div>
             </md-input-container>
         </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Texto de la constancia</label>
+                <textarea name="event_text" ng-model="item.event_text" md-maxlength="2048" rows="5" ng-change="change()" md-select-on-focus></textarea>
+            </md-input-container>
+        </div>
     </form>
 </md-content>
 <md-button  ng-disabled="!form.$valid" class="md-fab md-fab-bottom-right" ng-click="save()">    
