@@ -98,32 +98,27 @@ angular.module('main.models', ['ngResource'])
         var template = {
             pageSize: 'LETTER',
             pageOrientation: 'landscape',
-            pageMargins: [ 40, 60, 40, 60 ],
+            info: {
+                title: 'Constancia',
+                author: 'FES Iztacala',
+                subject: 'Constancia',
+                keywords: 'UNAM, Iztacala, Constancia',
+            },
             footer: {
                 columns: [
-                data.date_date,
-                { text: data.students_has_date_uuid, alignment: 'right' }
+                { text: data.event_date, style: 'small', margin: [ 15,0, 0, 0 ] },
+                { text: data.students_has_date_uuid, alignment: 'right', style: 'small' }
                 ]
+            },
+            background: {
+                image: data.event_background,
+                width: 790
             },
             content: [
             {
-                text: 'Otorga la presente',
-                style: 'text',
-                margin: [ 5, 100, 5, 5 ]
-            },
-            {
-                text: 'Constancia',
-                style: 'title',
-            },
-            {
-                text: 'por su participación a:',
-                style: 'text',
-                margin: [ 5, 5, 5, 24 ]
-            },
-            {
                 text: data.student_firstname + ' ' + data.student_lastname,
                 style: 'name',
-                margin: [ 5, 2, 10, 20 ]
+                margin: [ 5, 200, 10, 20 ]
             },
             {
                 text: data.event_text, 
@@ -132,35 +127,38 @@ angular.module('main.models', ['ngResource'])
             }
             ],
             styles: {
-            header: {
-                bold: true,
-                color: '#000',
-                fontSize: 11
-            },
-            title: {
-                fontSize: 32,
-                bold: true,
-                alignment: 'center'
-            },
-            text: {
-                color: '#666',
-                fontSize: 18,
-                bold: true,
-                alignment: 'center'
-            },
-            body: {
-                color: '#666',
-                fontSize: 18,
-                italics: true,
-                alignment: 'center'
-            },
-            name: {
-                color: '#666',
-                fontSize: 28,
-                italics: true,
-                bold: true,
-                alignment: 'center'
-            }
+                header: {
+                    bold: true,
+                    color: '#000',
+                    fontSize: 11
+                },
+                title: {
+                    fontSize: 52,
+                    bold: true,
+                    alignment: 'center'
+                },
+                text: {
+                    color: '#666',
+                    fontSize: 18,
+                    bold: true,
+                    alignment: 'center'
+                },
+                body: {
+                    color: '#666',
+                    fontSize: 18,
+                    italics: true,
+                    alignment: 'center'
+                },
+                name: {
+                    color: '#666',
+                    fontSize: 28,
+                    italics: true,
+                    bold: true,
+                    alignment: 'center'
+                },
+                small: {
+                    fontSize: 8
+                }
             }
         };
         
