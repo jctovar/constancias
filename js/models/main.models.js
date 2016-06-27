@@ -16,6 +16,13 @@ angular.module('main.models', ['ngResource'])
     });
 })
 
+.factory('enrollments', function($resource, server_config) {
+	return $resource(server_config.url + '/enrollments/:id', { id : '@_id' },
+    {
+        'update': { method:'PUT' }
+    });
+})
+
 .factory('groups', function($resource, server_config) {
 	return $resource(server_config.url + '/groups/:id', { id : '@_id' },
     {

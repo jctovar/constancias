@@ -535,15 +535,10 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
   });
   
   $scope.certificate = function (index) {
-    var data = certificates.get({ id: index }, function() {
-        console.log(data.certificates[0]);   
-
-        var docDefinition = pdf_template(data.certificates[0]);
-
-        pdfMake.createPdf(docDefinition).print(); 
-    });
-
-        
+        var data = certificates.get({ id: index }, function() {
+            var docDefinition = pdf_template(data.certificates[0]);
+            pdfMake.createPdf(docDefinition).print(); 
+        });     
   };
 
   $scope.clear = function () {
@@ -552,11 +547,7 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
   }
   
   $scope.add = function () {
-      $location.path('/student')
-  }
-  
-  $scope.edit = function (index) {
-      $location.path('/student/'+ index);
+      $location.path('add/' + $routeParams.dateId)
   }
   
   $scope.delete = function(index, ev) {
@@ -573,7 +564,7 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
   };
   
   var del = function (id) {
-        students.delete({ id: id })
+        certificates.delete({ id: id })
         .$promise.then(function (result) {
             inito();
             $mdToast.show($mdToast.simple().textContent('Registro eliminado!'));
@@ -595,3 +586,25 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
         });
    };
 })
+
+.controller('AddCtrl', function ($scope, $location, $routeParams, $mdDialog, $mdToast, pdf_template, enrollments, groups) {
+    $scope.$on('$viewContentLoaded', function ($evt, data) {
+      inito();
+    });
+
+    $scope.add = function () {
+      console.log('...',$scope.items);
+    }
+
+    var inito = function () {
+        $scope.bar = false;
+        enrollments.get({ id: $routeParams.dateId })
+        .$promise.then(function (result) {
+            $scope.items = result.enrollments;
+            $scope.bar = !$scope.bar;
+        })
+        .catch(function(error) {
+             $location.path('/login')
+        });
+   };
+});

@@ -94,6 +94,12 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
           templateUrl: 'templates/groups/group.html',
           controller: 'GroupCtrl',
         })
+        // add student to group
+        .when('/add/:dateId', {
+          title: 'Matricular alumnos',
+          templateUrl: 'templates/groups/add.html',
+          controller: 'AddCtrl',
+        })
         // Users
         .when('/users', {
           title: 'Usuario',
