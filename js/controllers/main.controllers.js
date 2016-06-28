@@ -592,8 +592,22 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
       inito();
     });
 
-    $scope.add = function () {
-      console.log('...',$scope.items);
+    $scope.add = function () {        
+        angular.forEach($scope.items, function(value, key) {
+            if (value.enroll === true) {
+                console.log("I Found something...", value.student_id);
+                groups.save({ student_id: value.student_id, date_id: $routeParams.dateId })
+                .$promise.then(function (result) {
+                    if (result.groups.affectedRows == 1) {
+                      $mdToast.show($mdToast.simple().textContent('Datos guardados!'));
+                    };
+                })
+                .catch(function(error) {
+                    $mdToast.show($mdToast.simple().textContent('Ocurrio un error!'));
+                });
+            }
+        })
+        inito();
     }
 
     var inito = function () {
