@@ -1,0 +1,12 @@
+<md-menu ng-controller="MenuCtrl" md-position-mode="target-right target">
+    <md-button aria-label="Menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+        <md-icon md-svg-icon="more_vert"></md-icon>
+    </md-button>
+    <md-menu-content width="4">
+        <md-menu-item>
+        <md-button ng-click="show(item.date_id)">
+            <div layout="row"><p flex>Ver alumnos</p><md-icon md-svg-icon="group"></md-icon></div>
+        </md-button>
+        </md-menu-item>
+    </md-menu-content>
+</md-menu>

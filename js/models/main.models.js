@@ -52,7 +52,7 @@ angular.module('main.models', ['ngResource'])
 })
 
 .factory('dates', function($resource, server_config) {
-	return $resource(server_config.url + '/dates/:id', { id : '@_id' },
+	return $resource(server_config.url + '/dates/:event_id/:date_id', { id : '@_id' },
     {
         'update': { method:'PUT' }
     });

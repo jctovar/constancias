@@ -78,15 +78,15 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
           templateUrl: 'templates/dates/dates.html',
           controller: 'DatesCtrl'
         })
-        .when('/date', {
+        .when('/date/:eventId', {
           title: 'Agregar fecha',
-          templateUrl: 'templates/dates/user.html',
-          controller: 'AddUserCtrl'
+          templateUrl: 'templates/dates/date.html',
+          controller: 'AddDateCtrl'
         })
-        .when('/date/:dateId', {
+        .when('/date/:eventId/:dateId', {
           title: 'Editar fecha',
           templateUrl: 'templates/dates/user.html',
-          controller: 'EditUserCtrl',
+          controller: 'EditDateCtrl',
         })
         // groups
         .when('/group/:dateId', {

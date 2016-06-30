@@ -43,25 +43,7 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
 })
 
 .controller('DashboardCtrl', function ($scope, $location, $mdDialog, $mdToast, dates) {
-    $scope.$on('$viewContentLoaded', function ($evt, data) {
-        inito();
-    });
-
-    $scope.show = function (index) {
-      $location.path('/group/'+ index);
-    }
-
-    var inito = function () {
-            $scope.bar = false;
-            dates.get()
-            .$promise.then(function (result) {
-                $scope.items = result.dates;
-                $scope.bar = !$scope.bar;
-            })
-            .catch(function(error) {
-                $location.path('/login')
-            });
-    };
+    
 })
 
 .controller('NavCtrl', function ($scope, $location, $mdSidenav, auth) {
@@ -482,12 +464,16 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
       $location.path('dates/'+ index)
   }
 
+  $scope.show = function (index) {
+      $location.path('/group/'+ index);
+  }
+
   $scope.add = function () {
-      $location.path('event')
+      $location.path('date/'+$routeParams.eventId)
   }
   
   $scope.edit = function (index) {
-      $location.path('event/'+ index);
+      $location.path('date/'+ index);
   }
   
   $scope.delete = function(index, ev) {
@@ -516,7 +502,7 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
   
   var inito = function () {
         $scope.bar = false;
-        dates.get({ id: $routeParams.dateId })
+        dates.get({ event_id: $routeParams.eventId })
         .$promise.then(function (result) {
             $scope.items = result.dates;
             $scope.bar = !$scope.bar;
@@ -525,6 +511,52 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
              $location.path('/login')
         });
    };
+})
+
+.controller('AddDateCtrl', function ($scope, $location, $routeParams, $mdToast, dates) {
+    $scope.counter = 0;
+    
+    $scope.save = function () {  
+          if ($scope.counter != 0) {
+              var result = dates.save($scope.item, function() {
+                  if (result.dates.affectedRows == 1) {
+                      $mdToast.show($mdToast.simple().textContent('Datos guardados!'));
+                      $location.path('dates')
+                  };
+              });            
+          } else {
+              $location.path('dates')
+          }
+    };
+    
+    $scope.change = function() {
+        $scope.counter++;
+    };
+})
+
+.controller('EditDateCtrl', function ($scope, $location, $routeParams, $mdToast, dates) {
+    $scope.counter = 0;
+    
+    $scope.save = function () {  
+          if ($scope.counter != 0) {
+              var result = accounts.update($scope.item, function() {
+                  if (result.accounts.affectedRows == 1) {
+                      $mdToast.show($mdToast.simple().textContent('Datos guardados!'));
+                      $location.path('users')
+                  };
+              });            
+          } else {
+              $location.path('users')
+          }
+    };
+    
+    $scope.change = function() {
+        $scope.counter++;
+    };
+
+    var query = accounts.get({ id: $routeParams.accountId },function() {
+        $scope.item = query.accounts[0];    
+    });
 })
 
 .controller('GroupCtrl', function ($scope, $location, $routeParams, $mdDialog, $mdToast, pdf_template, groups, certificates) {

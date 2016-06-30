@@ -1,0 +1,36 @@
+<div ng-include=" 'templates/partials/back.html' "></div>
+<md-content layout-padding>
+    <form name="form">
+        <div layout-gt-sm="row">
+            <md-datepicker ng-model="item.date_date" md-placeholder="Fecha del evento" ng-change="change()" required>
+            </md-datepicker>
+            <div ng-messages="form.date_date.$error">
+              <div ng-message="valid">Se requiere una fecha valida!</div>
+            </div>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Cupo</label>
+                <input name="date_quantity" ng-model="item.date_quantity" type="number" ng-change="change()" step="1" min="1" max="45" required>
+                <div ng-messages="form.date_quantity.$error">
+                    <div ng-message-exp="['required', 'min', 'max']">
+                        Se requiere un valor valido, entre 1 y 45
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Costo</label>
+                <input name="date_price" ng-model="item.date_price" type="number" ng-change="change()" step="5" min="0" max="1000" required>
+                <div ng-messages="form.date_price.$error">
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+        </div>
+    </form>
+</md-content>
+<md-button  ng-disabled="!form.$valid" class="md-fab md-fab-bottom-right" ng-click="save()">    
+  <md-icon md-svg-icon="check"></md-icon>
+  <md-tooltip md-direction="top"> Aceptar </md-tooltip>
+</md-button>
