@@ -1,0 +1,36 @@
+<div ng-include=" 'templates/partials/back.html' "></div>
+<md-content layout-padding>
+    <form name="form">
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Nombre</label>
+                <input name="user_name" ng-model="item.user_name" type="text" ng-change="change()" capitalize md-maxlength="45" required>
+                <div ng-messages="form.user_name.$error">
+                    <div ng-message="md-maxlength">El campo debe de ser de menos de 45 caracteres de longitud</div>
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Correo electrónico</label>
+                <input name="user_email" ng-model="item.user_email" type="email" ng-change="change()" md-maxlength="45" required>
+                <div ng-messages="form.user_email.$error">
+                    <div ng-message="md-maxlength">El campo debe de ser de menos de 45 caracteres de longitud</div>
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Teléfono</label>
+                <input name="user_phone" ng-model="item.user_phone"type="phone" ng-change="change()" ng-pattern="/^[0-9]{10}$/" md-maxlength="10">
+                <div ng-messages="form.user_phone.$error">
+                    <div ng-message="md-pattern">El campo debe de ser un numero teléfonico</div>
+                </div>
+            </md-input-container>
+        </div>
+    </form>
+</md-content>
+<md-button  ng-disabled="!form.$valid" class="md-fab md-fab-bottom-right" ng-click="save()">    
+  <md-icon md-svg-icon="check"></md-icon>
+  <md-tooltip md-direction="top"> Aceptar </md-tooltip>
+</md-button>

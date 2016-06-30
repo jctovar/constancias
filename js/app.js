@@ -122,18 +122,13 @@ angular.module('starter', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', '
           controller: 'DashboardCtrl'
         })
 
-        .when('/my', {
-          title: 'Datos personales',
-          templateUrl: 'templates/user.html',
-          controller: 'ProfileCtrl'
-        })
         .when('/password', {
-          templateUrl: 'templates/password.html',
+          templateUrl: 'templates/app/password.html',
           controller: 'PasswordCtrl'
         })
         .when('/account', {
-          templateUrl: 'templates/account.html',
-          controller: 'AccountCtrl'
+          templateUrl: 'templates/app/account.html',
+          controller: 'ProfileCtrl'
         })
         .when('/', {
           title: 'Inicio',

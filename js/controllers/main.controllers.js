@@ -96,7 +96,7 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
         $location.path(route);
     }
     
-    $scope.admin = [{link : 'my', title: 'Mi perfil', icon: 'face'},{link : 'password', title: 'Cambiar contraseña', icon: 'lock'},{link : 'account', title: 'Cuenta', icon: 'settings'}];
+    $scope.admin = [{link : 'account', title: 'Mi perfil', icon: 'face'},{link : 'password', title: 'Cambiar contraseña', icon: 'lock'}];
     
     $scope.logout = function () {
           auth.logout();
@@ -108,6 +108,56 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
     
     $scope.user_name = sessionStorage.name;
     $scope.user_email = sessionStorage.email;
+})
+
+.controller('ProfileCtrl', function ($scope, $location, $mdDialog, $mdToast, accounts) {
+    $scope.counter = 0;
+    
+    $scope.save = function () {  
+          if ($scope.counter != 0) {
+              var result = users.update($scope.item, function() {
+                  if (result.users.affectedRows == 1) {
+                      $mdToast.show($mdToast.simple().textContent('Datos guardados!'));
+                      $location.path('dashboard')
+                  };
+              });            
+          } else {
+              $location.path('dashboard')
+          }
+    };
+    
+    $scope.change = function() {
+        $scope.counter++;
+    };
+    
+    var query = accounts.get({ id: sessionStorage.id },function() {
+        $scope.item = query.accounts[0];    
+    });
+})
+
+.controller('PasswordCtrl', function ($scope, $mdToast, accounts) {
+    $scope.counter = 0;
+    
+    $scope.save = function () {  
+          if ($scope.counter != 0) {
+              var result = users.update($scope.item, function() {
+                  if (result.users.affectedRows == 1) {
+                      $mdToast.show($mdToast.simple().textContent('Datos guardados!'));
+                      $location.path('dashboard')
+                  };
+              });            
+          } else {
+              $location.path('dashboard')
+          }
+    };
+    
+    $scope.change = function() {
+        $scope.counter++;
+    };
+    
+    var query = accounts.get({ id: sessionStorage.id },function() {
+        $scope.item = query.accounts[0];    
+    });
 })
 
 // get all students  
@@ -515,6 +565,8 @@ angular.module('main.controllers', ['main.auth', 'main.models', 'main.directives
 
 .controller('AddDateCtrl', function ($scope, $location, $routeParams, $mdToast, dates) {
     $scope.counter = 0;
+    $scope.item = {}; 
+    $scope.item.event_id = $routeParams.eventId;
     
     $scope.save = function () {  
           if ($scope.counter != 0) {
